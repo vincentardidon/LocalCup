@@ -1,22 +1,22 @@
 import {
-    Image,
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 
 import {
-    Heart,
-    Plus,
-    Star,
+  Heart,
+  Plus,
+  Star,
 } from "lucide-react-native";
 
 import {
-    COLORS,
-    RADIUS,
-    SPACING,
-    TYPOGRAPHY,
+  COLORS,
+  RADIUS,
+  SPACING,
+  TYPOGRAPHY,
 } from "../constants/theme";
 
 export default function CoffeeMenuCard({
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
 
   name: {
     flex: 1,
-    fontFamily: TYPOGRAPHY.product.fontFamily,
+    fontFamily: TYPOGRAPHY.productName.fontFamily,
     fontSize: 18,
     color: COLORS.text,
   },

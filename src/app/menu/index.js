@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 
+
 import { useRouter } from "expo-router";
 
 import CategoryTabs from "../../components/CategoryTabs";
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
   },
 
   emptyTitle: {
-    fontFamily: TYPOGRAPHY.section.fontFamily,
+    fontFamily: TYPOGRAPHY.productName.fontFamily,
     fontSize: 20,
     color: COLORS.text,
   },
