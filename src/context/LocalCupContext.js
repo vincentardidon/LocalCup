@@ -9,16 +9,72 @@ export function LocalCupProvider({ children }) {
 
   const addToCart = (item) => {
     setCart((currentCart) => {
-      return [...currentCart, item];
+      const existingIndex = currentCart.findIndex(
+        (cartItem) =>
+          cartItem.id === item.id &&
+          cartItem.cafeId === item.cafeId
+      );
+
+      if (existingIndex !== -1) {
+        return currentCart.map((cartItem, index) =>
+          index === existingIndex
+            ? {
+                ...cartItem,
+                quantity:
+                  (cartItem.quantity || 1) + (item.quantity || 1),
+              }
+            : cartItem
+        );
+      }
+
+      return [
+        ...currentCart,
+        {
+          ...item,
+          quantity: item.quantity || 1,
+        },
+      ];
     });
   };
 
+  const increaseQuantity = (index) => {
+    setCart((currentCart) =>
+      currentCart.map((item, itemIndex) =>
+        itemIndex === index
+          ? {
+              ...item,
+              quantity: (item.quantity || 1) + 1,
+            }
+          : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (index) => {
+    setCart((currentCart) =>
+      currentCart
+        .map((item, itemIndex) =>
+          itemIndex === index
+            ? {
+                ...item,
+                quantity: Math.max((item.quantity || 1) - 1, 0),
+              }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
   const removeFromCart = (index) => {
-    setCart((currentCart) => {
-      return currentCart.filter(
+    setCart((currentCart) =>
+      currentCart.filter(
         (_, itemIndex) => itemIndex !== index
-      );
-    });
+      )
+    );
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   const toggleFavorite = (cafeId) => {
@@ -41,7 +97,10 @@ export function LocalCupProvider({ children }) {
         currentUser,
         setCurrentUser,
         addToCart,
+        increaseQuantity,
+        decreaseQuantity,
         removeFromCart,
+        clearCart,
         toggleFavorite,
       }}
     >

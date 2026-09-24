@@ -1,28 +1,27 @@
 import { useMemo, useState } from "react";
 
 import {
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
+    FlatList,
+    StyleSheet,
+    Text,
+    View,
 } from "react-native";
 
-
 import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import CategoryTabs from "../../components/CategoryTabs";
 import CoffeeMenuCard from "../../components/CoffeeMenuCard";
 
 import {
-  MENU_CATEGORIES,
-  MENU_ITEMS,
+    MENU_CATEGORIES,
+    MENU_ITEMS,
 } from "../../data/menuData";
 
 import {
-  COLORS,
-  SPACING,
-  TYPOGRAPHY,
+    COLORS,
+    SPACING,
+    TYPOGRAPHY,
 } from "../../constants/theme";
 
 export default function MenuScreen() {
